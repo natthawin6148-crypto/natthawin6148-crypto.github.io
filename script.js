@@ -23,27 +23,35 @@ const nextToFinalBtn = document.getElementById("next-to-final");
 
 // ===========================
 // ✨ SPECIAL FUNCTION: AUTO SCALING ✨
-// ฟังก์ชันย่อหน้าต่างให้พอดีจอมือถือ (รักษาสัดส่วนเดิมเป๊ะๆ)
 // ===========================
 function resizeContent() {
-    const screenWidth = window.innerWidth;
+    const screenWidth  = window.innerWidth;
     const screenHeight = window.innerHeight;
-    
-    // ขนาดเดิมที่เราล็อคไว้ใน CSS (800px)
-    const targetWidth = 800; 
-    const margin = 40; // เว้นขอบข้างนิดหน่อย
+    const isPortrait   = screenWidth < 500 && screenHeight > screenWidth; // เงื่อนไขเดียวกับ media query
 
-    // คำนวณว่าจอมือถือเล็กกว่าคอมกี่เท่า
     let scale = 1;
-    if (screenWidth < targetWidth + margin) {
-        scale = (screenWidth - margin) / targetWidth;
+
+    if (isPortrait) {
+        // ---- แนวตั้ง: scale จาก HEIGHT ----
+        // เปลี่ยน targetHeight ได้เลยครับ (ควรตรงกับความสูงจริงของกล่องตอน portrait)
+        const targetHeight = 700;
+        const margin = 40;
+        if (screenHeight < targetHeight + margin) {
+            scale = (screenHeight - margin) / targetHeight;
+        }
+    } else {
+        // ---- แนวนอน: scale จาก WIDTH (เหมือนเดิม) ----
+        const targetWidth = 800;
+        const margin = 40;
+        if (screenWidth < targetWidth + margin) {
+            scale = (screenWidth - margin) / targetWidth;
+        }
     }
 
-    // ส่งค่า Scale ไปให้ CSS ใช้
     letterWindow.style.setProperty('--scale-factor', scale);
 }
 
-// เรียกใช้ฟังก์ชันย่อจอ ทุกครั้งที่โหลดหรือหมุนจอ
+// เรียกใช้ทุกครั้งที่โหลดหรือหมุนจอ
 window.addEventListener('resize', resizeContent);
 window.addEventListener('load', resizeContent);
 
@@ -53,12 +61,10 @@ window.addEventListener('load', resizeContent);
 // ===========================
 envelopeContainer.addEventListener("click", () => {
     const music = document.getElementById('bg-music');
-    if(music) {
-        music.volume = 0.4;
-        music.play().catch(e => console.log("Audio prevent:", e));
-    }
+    music.volume = 0.4;
+    music.play();
 
-    resizeContent(); // คำนวณขนาดก่อนเปิด
+    resizeContent();
 
     envelopeContainer.style.display = "none";
     letterContainer.style.display = "flex";
@@ -66,15 +72,16 @@ envelopeContainer.addEventListener("click", () => {
     setTimeout(() => {
         letterWindow.classList.add("open");
     }, 50);
+
+    envelopeContainer.classList.add('fade-out');
 });
 
 // ===========================
-// 2. Logic Button NO (รองรับทั้งเมาส์และนิ้วแตะ)
+// 2. Logic Button NO
 // ===========================
 function moveNoButton(e) {
-    if(e) e.preventDefault(); // กันกดโดน
+    if(e) e.preventDefault();
 
-    // ปรับระยะหนีตามขนาดหน้าจอ (ถ้าจอมือถือให้หนีน้อยลงหน่อย)
     const isMobile = window.innerWidth < 768;
     const maxMove = isMobile ? 80 : 150; 
 
@@ -84,9 +91,9 @@ function moveNoButton(e) {
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 }
 
-noBtn.addEventListener("mouseover", moveNoButton); // คอม
-noBtn.addEventListener("touchstart", moveNoButton); // มือถือ/ไอแพด
-noBtn.addEventListener("click", moveNoButton); // กันเหนียว
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
+noBtn.addEventListener("click", moveNoButton);
 
 // ===========================
 // 3. Story Flow
@@ -99,12 +106,10 @@ nextToStep2Btn.addEventListener("click", () => {
     step1Container.style.display = "none";
     step2Container.style.display = "flex";
 });
-
 nextToStep3Btn.addEventListener("click", () => {
     step2Container.style.display = "none";
     step3Container.style.display = "flex";
 });
-
 nextToFinalBtn.addEventListener("click", () => {
     step3Container.style.display = "none";
     stepFinalContainer.style.display = "flex";
