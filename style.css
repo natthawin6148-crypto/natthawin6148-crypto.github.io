@@ -1,0 +1,213 @@
+/* ===== FONTS ===== */
+/* Pixelify Sans สำหรับ EN, Sarabun สำหรับ TH (อ่านง่าย น่ารัก) */
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Sarabun:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("heart-bg.jpg");
+    background-size: cover;
+    font-family: "Pixelify Sans", "Sarabun", sans-serif;
+    overflow: hidden;
+}
+
+/* Envelope Screen */
+#envelope-container {
+    text-align: center;
+    cursor:pointer;
+}
+
+@keyframes pulse {
+    0% {
+        transform:scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#envelope{
+    width: 200px;
+    animation: pulse 1.5s infinite;
+    cursor: pointer;
+}
+
+#letter-container{
+    display: none;
+    position:fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-window{
+    width: 90vw;
+    max-width: 800px;
+    aspect-ratio: 3/2;
+    padding: 20px 20px 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("window.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 12px;
+    gap: 1px;
+    padding-top: 180px;
+
+    transform: scale(1.2);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* ตอนเปิด */
+.letter-window.open {
+    transform: scale(var(--scale-factor)); 
+    opacity: 1;
+}
+
+h1 {
+    font-size: 30px;
+    margin:0;
+}
+
+p {
+    font-size: 40px;
+}
+
+/* ===== CAT ===== */
+.cat.main-cat {
+    width: 160px;       /* เล็กลงนิดให้สมส่วนกับ window */
+    margin: 4px 0;
+    image-rendering: pixelated;
+}
+
+/* ===== STORY IMAGES ===== */
+.story-img {
+    width: 240px;            /* ความกว้างคงที่ */
+    height: auto;            /* !สำคัญ! ให้สูงตามธรรมชาติของรูป รูปจะไม่เบี้ยวและกรอบจะรัดรูปพอดี */
+    
+    /* ถ้ากลัวรูปแนวตั้งจะสูงเกินไป ให้เปิดใช้บรรทัดล่างนี้ครับ (ถ้าไม่ซีเรียส ปิดไว้ได้) */
+    /* max-height: 400px; */ 
+    
+    object-fit: cover;       /* ตัดส่วนเกินทิ้งเพื่อให้รูปเต็มกรอบเสมอ (เผื่อกรณีจำกัดความสูง) */
+    
+    border-radius: 20px;     /* มนแน่นอน 100% เพราะกรอบรัดรูปพอดี */
+    
+    margin-bottom: 15px;    
+    margin-top: 20px;      
+    
+    /* เพิ่มเงาบางๆ ให้รูปดูลอยสวยขึ้น (ไหนๆ ก็แก้แล้ว) */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    
+    display: block;          /* จัดให้เป็นบล็อก จะได้จัด margin ง่ายๆ */
+    
+}
+
+#step2-container .story-img {
+    width: 450px;       /* แก้ตัวเลขตรงนี้ตามใจชอบเลยครับ (ของเดิม 350px) */
+    max-width: 90vw;    /* กันไม่ให้รูปใหญ่เกินหน้าจอมือถือ */
+}
+
+/* ===== STORY TEXT (ปรับให้สวยเหมือนหน้าแรก) ===== */
+.story-text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 0 15px 0;      /* จัดระยะห่าง */
+    padding: 15px 20px;
+    max-width: 550px;
+    
+    /* เพิ่มส่วนนี้เพื่อให้ข้อความดูเหมือนหน้าแรก (final-text) */
+    background-color: rgba(255, 255, 255, 0.6); /* พื้นหลังจางๆ */
+    border-radius: 10px;     /* ขอบมน */
+    display: inline-block;   /* ให้กรอบหุ้มข้อความพอดี */
+}
+
+.deco-heart {
+    width: 52px;
+    margin-top: 8px;
+    image-rendering: pixelated;
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    margin-top: 12px;
+}
+
+.no-wrapper {
+    position: relative;
+    width: 120px;
+    height: auto;
+}
+
+.btn {
+    width: 120px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.15s ease;
+    image-rendering: pixelated;
+}
+
+.btn:hover { transform: scale(1.07); }
+
+.next-btn {
+    width: 100px;
+    margin: 0 0 5px 0;
+    display: block;
+    image-rendering: pixelated;
+}
+
+.yes-btn {
+    position: relative;
+    z-index: 2;
+}
+
+.no-btn {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* ===== FINAL TEXT BOX (step1) ===== */
+.final-text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 0 15px 0;      /* จัดระยะห่าง */
+    padding: 15px 20px;
+    max-width: 550px;
+    
+    /* เพิ่มส่วนนี้เพื่อให้ข้อความดูเหมือนหน้าแรก (final-text) */
+    background-color: rgba(255, 255, 255, 0.6); /* พื้นหลังจางๆ */
+    border-radius: 10px;     /* ขอบมน */
+    display: inline-block;   /* ให้กรอบหุ้มข้อความพอดี */
+}
+
+/* ===== STORY STEP WRAPPER ===== */
+.story-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

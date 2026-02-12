@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Letter For Opa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Sarabun:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="envelope-container">
+      <img src="envelope.png" alt="Envelope" id="envelope" />
+      <p>♡ Letter for You ♡</p>
+    </div>
+
+    <div id="letter-container">
+      <div class="letter-window">
+        
+        <div id="initial-content">
+          <h1 id="letter-title">Will you be my Valentine?</h1>
+
+          <img
+            src="cat_heart.gif"
+            class="cat main-cat"
+            id="letter-cat"
+            alt="Cute Cat"
+          />
+
+          <div class="buttons" id="letter-buttons">
+            <img src="yes.png" class="btn yes-btn" alt="Yes" />
+
+            <div class="no-wrapper">
+              <img src="no.png" class="btn no-btn" alt="No" />
+            </div>
+          </div>
+        </div>
+
+        <div id="step1-container" class="story-step" style="display: none;">
+          <h1 style="margin-bottom: 20px;">Yippeeee!</h1>
+
+          <img
+            src="cat_dance.gif"
+            class="cat main-cat"
+            alt="Dancing Cat"
+            style="width: 180px;"
+          />
+
+          <p class="final-text">
+            สุขสันต์วันวาเลนไทน์น้าพี่โอปอสุดสวยของงผมม
+          </p>
+
+          <img
+            src="next.png"
+            class="btn next-btn"
+            id="next-to-step2"
+            alt="Next"
+          />
+        </div>
+
+        <div id="step2-container" class="story-step" style="display: none;">
+          <img
+            src="IMG_9421.png"
+            class="story-img"
+            alt="Our Story Image 1"
+          />
+
+          <p class="story-text">
+            จากตั้งแต่วันนั้นที่พี่ทักมาหาผมครั้งแรก
+            มันทำให้ผมได้พบผู้หญิงคนหนึ่ง
+          </p>
+
+          <img
+            src="next.png"
+            class="btn next-btn"
+            id="next-to-step3"
+            alt="Next"
+          />
+        </div>
+
+        <div id="step3-container" class="story-step" style="display: none;">
+          <img
+            src="love_one.png"
+            class="story-img"
+            alt="Our Story Image 2"
+          />
+
+          <p class="story-text">
+            ที่ทำให้ผมตกหลุมรักทั้งความอ๋อง น่ารัก ใจดี
+            และคอยอยู่เป็นกำลังใจให้ผมเสมอ
+            แม้ผมจะเหนื่อยจากการเรียนหรือสอบแค่ไหน
+            เขาก็อยู่ข้างผม
+          </p>
+
+          <img
+            src="next.png"
+            class="btn next-btn"
+            id="next-to-final"
+            alt="Next"
+          />
+        </div>
+
+        <div id="step-final-container" class="story-step" style="display: none;">
+          <img
+            src="love_two.png"
+            class="story-img"
+            alt="Our Story Image Final"
+          />
+
+          <p class="story-text">
+            ขอบคุณสาวสุดน่ารักคนนี้น้าพี่โอปอ
+            รักกน้า สุขสันต์วันวาเลนไทน์ค้าบ
+          </p>
+
+          <img
+            src="cat_heart.gif"
+            class="deco-heart"
+            alt="Heart Decoration"
+          />
+        </div>
+
+      </div>
+    </div>
+
+    <audio id="bg-music" loop>
+      <source src="JENNIE.mp3.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
