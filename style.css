@@ -211,3 +211,61 @@ p {
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
 }
+
+
+/* ============================================================
+   📱 MOBILE PORTRAIT MODE — แก้ค่าตรงนี้ได้เลยครับ
+   ============================================================ */
+@media (max-width: 500px) and (orientation: portrait) {
+
+    .letter-window {
+        width: 85vw;             /* กว้างขึ้นอีกนิดเพื่อให้มีพื้นที่ */
+        aspect-ratio: auto;      /* เปลี่ยนเป็น auto เพื่อให้ความสูงยืดตามเนื้อหา */
+        min-height: 80vh;        /* กำหนดความสูงขั้นต่ำไว้แทน */
+        padding: 180px 15px 30px 15px; /* เว้นระยะ บน-ซ้ายขวา-ล่าง */
+        gap: 8px;
+    }
+
+    /* --- หน้าแรก --- */
+    #envelope { width: 140px; }
+    #envelope-container p { font-size: 20px; }
+
+    /* --- หัวข้อ h1 --- */
+    h1 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    /* --- STEP 1: แมวเต้น (cat_dance.gif) --- */
+    #step1-container .cat.main-cat {
+        width: 30px;            /* ปรับขนาดแมวเต้นในหน้าแรกที่นี่ */
+        margin: 10px 0;
+    }
+
+    /* --- STEP 2, 3, Final: รูป Story --- */
+    .story-img {
+        width: 180px;            /* รูปใน Step อื่นๆ */
+        margin-top: 80px;
+        margin-bottom: 5px;
+    }
+
+    /* รูปคู่พิเศษใน Step 2 */
+    #step2-container .story-img {
+        width: 75vw;
+    }
+
+    /* --- กล่องข้อความ --- */
+    .story-text, .final-text {
+        font-size: 15px;         /* ขนาดพอดีคำ */
+        padding: 10px 15px;
+        line-height: 1.4;
+        max-width: 95%;
+    }
+
+    /* --- ปุ่มต่างๆ --- */
+    .btn { width: 85px; }
+    .no-wrapper { width: 85px; }
+    .next-btn { width: 75px; }
+    
+    .buttons { gap: 15px; }
+}
